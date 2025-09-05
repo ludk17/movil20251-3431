@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Movil3431</string>
     <string name="title_activity_contact_jet_pack">ContactJetPackActivity</string>
+    <string name="title_activity_jet_pack">JetPackActivity</string>
 </resources>

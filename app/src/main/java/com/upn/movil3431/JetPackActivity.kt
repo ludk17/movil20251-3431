@@ -8,57 +8,58 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Button
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.DividerDefaults
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.upn.movil3431.composables.ListaContactos
-import com.upn.movil3431.entities.Contact
-import com.upn.movil3431.services.ApiService
+import androidx.compose.ui.tooling.preview.Preview
 import com.upn.movil3431.ui.theme.Movil3431Theme
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
+class JetPackActivity : ComponentActivity() {
+//    var counter = 0;
+//    var counter = mutableStateOf(0)
+//    var counter by mutableStateOf(0)
 
-class ContactJetPackActivity : ComponentActivity() {
-
+    //    var lista by mutableStateOf(listOf<String>())
+//        var lista = mutableStateListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-
-//        var contacts = listOf<Contact>()
-//        var contacts by mutableStateOf(listOf())
-
-
-
-
-
         setContent {
             Movil3431Theme {
 
-
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-
                     Box(
-                        modifier = Modifier
-                            .fillMaxSize()
+                        modifier = Modifier.fillMaxSize()
                             .padding(innerPadding),
+                        contentAlignment = Alignment.Center
                     ) {
-                        ListaContactos()
+                        Column {
+                            var counter by remember { mutableStateOf(0) }
+
+                            Text(
+                                text = "$counter",
+                                modifier = Modifier.padding(innerPadding)
+                            )
+                            Button(
+                                onClick = {
+                                    counter++
+                                    Log.i("MAIN_APP", "Counter: $counter")
+                                },
+                            ) {
+                                Text(text = "Click!")
+                            }
+                        }
+
                     }
 
                 }
@@ -66,5 +67,3 @@ class ContactJetPackActivity : ComponentActivity() {
         }
     }
 }
-
-

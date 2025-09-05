@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,10 +14,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Movil3431">
         <activity
+            android:name=".JetPackActivity"
+            android:exported="true"
+            android:label="@string/title_activity_jet_pack"
+            android:theme="@style/Theme.Movil3431" >
+
+        </activity>
+        <activity
             android:name=".ContactJetPackActivity"
             android:exported="true"
             android:label="@string/title_activity_contact_jet_pack"
-            android:theme="@style/Theme.Movil3431" >
+            android:theme="@style/Theme.Movil3431">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,9 +33,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>
