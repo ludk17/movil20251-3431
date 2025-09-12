@@ -64,7 +64,7 @@ fun ListaContactos() {
             Column {
                 Button(
                     onClick = {
-                        contacts = contacts + Contact("Nuevo Contacto", "000000000")
+                        contacts = contacts + Contact("","Nuevo Contacto", "000000000")
                     }
                 ) {
                     Text(text = "Add Random Contact")

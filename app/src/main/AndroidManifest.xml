@@ -14,22 +14,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Movil3431">
         <activity
-            android:name=".JetPackActivity"
+            android:name=".RealtimeDatabaseActivity"
             android:exported="true"
-            android:label="@string/title_activity_jet_pack"
-            android:theme="@style/Theme.Movil3431" >
-
-        </activity>
-        <activity
-            android:name=".ContactJetPackActivity"
-            android:exported="true"
-            android:label="@string/title_activity_contact_jet_pack"
+            android:label="@string/title_activity_realtime_database"
             android:theme="@style/Theme.Movil3431">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".JetPackActivity"
+            android:exported="true"
+            android:label="@string/title_activity_jet_pack"
+            android:theme="@style/Theme.Movil3431"></activity>
+        <activity
+            android:name=".ContactJetPackActivity"
+            android:exported="true"
+            android:label="@string/title_activity_contact_jet_pack"
+            android:theme="@style/Theme.Movil3431">
+
         </activity>
         <activity
             android:name=".MainActivity"
