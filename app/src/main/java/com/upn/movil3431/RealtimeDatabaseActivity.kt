@@ -5,13 +5,16 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -23,6 +26,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
 import com.upn.movil3431.entities.Contact
 import com.upn.movil3431.ui.theme.Movil3431Theme
+import com.upn.movil3431.viewmodels.ContactListViewModel
 import kotlin.math.log
 
 class RealtimeDatabaseActivity : ComponentActivity() {
@@ -55,31 +59,14 @@ class RealtimeDatabaseActivity : ComponentActivity() {
 //            newChild1.setValue(item)
 //        }
 
-        val contacts = mutableStateListOf<Contact>()
-
-        val database = Firebase.database
-        val myRef = database.getReference("contacts")
-
-        myRef.addValueEventListener(object: ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-
-                for (item in snapshot.children) {
-                    val contact = item.getValue(Contact::class.java)
-                    contacts.add(contact!!)
-                }
-
-                Log.d("Firebase", contacts.size.toString())
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                // aca llega el error de firebase
-            }
-
-        })
-
-
         setContent {
             Movil3431Theme {
+
+                val viewmodel: ContactListViewModel by viewModels()
+
+                LaunchedEffect(Unit) {
+                    viewmodel.loadContacts()
+                }
 
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Box(
@@ -89,9 +76,13 @@ class RealtimeDatabaseActivity : ComponentActivity() {
                         contentAlignment = Alignment.Center
 
                     ) {
-                        LazyColumn {
-                            items(contacts){ contact ->
-                                Text(text = contact.name)
+                        if (viewmodel.isLoading) {
+                            CircularProgressIndicator()
+                        } else {
+                            LazyColumn {
+                                items(viewmodel.contacts) { contact ->
+                                    Text(text = contact.name)
+                                }
                             }
                         }
                     }
