@@ -14,10 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Movil3431">
         <activity
-            android:name=".RealtimeDatabaseActivity"
+            android:name=".LoginActivity"
             android:exported="true"
-            android:label="@string/title_activity_realtime_database"
-            android:theme="@style/Theme.Movil3431">
+            android:label="@string/title_activity_login"
+            android:theme="@style/Theme.Movil3431" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,17 +25,22 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".RealtimeDatabaseActivity"
+            android:exported="true"
+            android:label="@string/title_activity_realtime_database"
+            android:theme="@style/Theme.Movil3431">
+
+        </activity>
+        <activity
             android:name=".JetPackActivity"
             android:exported="true"
             android:label="@string/title_activity_jet_pack"
-            android:theme="@style/Theme.Movil3431"></activity>
+            android:theme="@style/Theme.Movil3431" />
         <activity
             android:name=".ContactJetPackActivity"
             android:exported="true"
             android:label="@string/title_activity_contact_jet_pack"
-            android:theme="@style/Theme.Movil3431">
-
-        </activity>
+            android:theme="@style/Theme.Movil3431"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="true" />
