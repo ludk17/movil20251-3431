@@ -8,10 +8,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
-
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
 
     <application
         android:allowBackup="true"
@@ -23,9 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Movil3431">
         <activity
-            android:name=".GPSActivity"
+            android:name=".SQLiteActivity"
             android:exported="true"
-            android:label="@string/title_activity_gpsactivity"
+            android:label="@string/title_activity_sqlite"
             android:theme="@style/Theme.Movil3431" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,13 +31,37 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--
+             TODO: Before you run your application, you need a Google Maps API key.
+
+             To get one, follow the directions here:
+
+                https://developers.google.com/maps/documentation/android-sdk/get-api-key
+
+             Once you have your API key (it starts with "AIza"), define a new property in your
+             project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
+             "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDbK_eK8LedYbIcWIDHwroNua4TnEvxjC0" />
+
+        <activity
+            android:name=".MapsActivity"
+            android:exported="true"
+            android:label="@string/title_activity_maps">
+
+        </activity>
+        <activity
+            android:name=".GPSActivity"
+            android:exported="true"
+            android:label="@string/title_activity_gpsactivity"
+            android:theme="@style/Theme.Movil3431"></activity>
         <activity
             android:name=".CameraActivity"
             android:exported="true"
             android:label="@string/title_activity_camera"
-            android:theme="@style/Theme.Movil3431">
-
-        </activity>
+            android:theme="@style/Theme.Movil3431" />
         <activity
             android:name=".LoginActivity"
             android:exported="false"
